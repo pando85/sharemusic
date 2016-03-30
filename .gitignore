@@ -1,0 +1,82 @@
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+#dist
+#build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+src
+pkg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# Translations
+# *.mo
+
+# Mr Developer
+.mr.developer.cfg
+
+# Local deployment
+stagger/
+cherrypy/
+sharemusic/site.log
+/cherry.cache.db
+/config.db
+/playlist.db
+/user.db
+/config
+/doc/man/*.gz
+
+# Eclipse metafiles
+/.project
+/.pydevproject
+/.settings
+/.checkstyle
+
+# Sublime metafiles
+.sublime*
+
+# Sphinx builds
+doc/sphinx/_build
+
+# pycharm
+.idea
+
+# virtual envs
+.venv
+
+# ipython notebook
+*.ipynb
+.ipynb*
+
+sharemusic/bin/
+sharemusic/venv/
+/static
+/venv
+
+*.db
+.DS_Store
+.idea
+venv
+env
+__pycache__
+
+# Configuration
+config.yml
+.env
+
+# Log file
+web/sharemusic.log
+web/sharemusic.error.log
