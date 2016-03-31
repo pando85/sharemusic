@@ -1,32 +1,25 @@
 web_test:
+  extends:
+    file: docker-compose.base.yml
+    service: web
   build: ./web-test
   links:
     - postgres_test:postgres
     - redis_test:redis
-  environment:
-    - SECRET_KEY=p0py3a&i7w^!#nfitarp&7p!0bj3j4!aez3huh)53!=ud128f(
-    - DEBUG
-  expose:
-    - "8000"
-  volumes:
-    - /tmp
-    - ./web:/usr/src/app
-  command: /usr/local/bin/gunicorn sharemusic.wsgi:application -w 6 -b :8000 --timeout 5000
 
 postgres_test:
-  image: postgres:latest
-  expose:
-    - "5432"
+  extends:
+    file: docker-compose.base.yml
+    service: postgres
   volumes_from:
     - data_test
 
 redis_test:
-  image: redis:latest
-  expose:
-    - "6379"
+  extends:
+    file: docker-compose.base.yml
+    service: redis
 
 data_test:
-  image: postgres:latest
-  volumes:
-    - /var/lib/postgresql
-  command: "true"
+  extends:
+    file: docker-compose.base.yml
+    service: data
