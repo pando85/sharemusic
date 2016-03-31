@@ -1,11 +1,18 @@
 web_test:
-  extends:
-    file: docker-compose.base.yml
-    service: web
+  environment:
+    - SECRET_KEY=p0py3a&i7w^!#nfitarp&7p!0bj3j4!aez3huh)53!=ud128f(
+    - DEBUG
+  expose:
+    - "8000"
+  volumes:
+    - /home/user/My Music:/usr/src/app/music:ro
+    - /tmp
+    - ./web:/usr/src/app
   build: ./web-test
   links:
     - postgres_test:postgres
     - redis_test:redis
+  command: /usr/local/bin/gunicorn sharemusic.wsgi:application -w 6 -b :8000 --timeout 5000
 
 postgres_test:
   extends:
