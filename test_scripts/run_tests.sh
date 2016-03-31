@@ -4,6 +4,10 @@ REPO_PATH="$( dirname $DIR)"
 
 cd $REPO_PATH
 
+if [ ! -f config.yml ]; then
+    cp config.example.yml config.yml
+fi
+
 docker-compose build web
 docker-compose -f docker-compose.test.yml build
 docker-compose -f docker-compose.test.yml up -d
