@@ -3,9 +3,11 @@ from django.conf.urls import url, include
 
 from rest_framework import routers
 
-from .views import FileViewSet, DirectoryViewSet, ServerStatusView, PlaylistViewSet, \
-    ImportPlaylistViewSet, ExportPlaylistViewSet, UserViewSet, UserSettingsViewSet,  \
-    TrackViewSet, stream, BrowseView, IndexDirectoryView, AlbumArtView, GlobalSearchList
+from .views import (FileViewSet, DirectoryViewSet, ServerStatusView, PlaylistViewSet, 
+    ImportPlaylistViewSet, ExportPlaylistViewSet, DownloadPlaylistViewSet, UserViewSet, 
+    UserSettingsViewSet, TrackViewSet, stream, BrowseView, IndexDirectoryView,
+     AlbumArtView, GlobalSearchList
+     )
 
 router = routers.DefaultRouter()
 router.register(r'file', FileViewSet)
@@ -22,6 +24,7 @@ urlpatterns = [
     url(r'^search/$', GlobalSearchList.as_view(), name="search"),
     url(r'^playlist/import/(?P<filename>.*)', ImportPlaylistViewSet.as_view(), name="import-playlist"),
     url(r'^playlist/export/$', ExportPlaylistViewSet.as_view(), name="export-playlist"),
+    url(r'^playlist/download/$', DownloadPlaylistViewSet.as_view(), name="download-playlist"),
     url(r'index/(?P<path>.*)', IndexDirectoryView.as_view(), name="index-files"),
     url(r'albumart/(?P<path>.*)', AlbumArtView.as_view(), name="album-art"),
     url(r'^', include(router.urls)),

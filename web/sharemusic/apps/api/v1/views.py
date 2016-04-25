@@ -249,6 +249,41 @@ class ExportPlaylistViewSet(APIView):
             mimetype='application/x-zip-compressed',
         )
 
+class DownloadPlaylistViewSet(APIView):
+    def get(self, request, format=None):
+        playlist_name = request.query_params.get('name', None)
+        logger.debug(playlist_name)
+        if not playlist_name:
+            playlist_name = 'new_playlist'
+
+        tracks_json = eval(request.query_params.get('tracks', None))
+        if not tracks_json:
+            return Response({'detail': ['No tracks in playlist to download.']},
+                    status=status.HTTP_400_BAD_REQUEST)
+
+        tracks_path = [str(File.objects.get(pk=track).absolute_path()) for track in tracks_json]
+
+        playlist_zip_directory = '/tmp' + settings.SENDFILE_ROOT
+        zip_filename = playlist_name + '.zip'
+        playlist_zip_path = os.path.join(playlist_zip_directory, zip_filename)
+
+        if not os.path.exists(playlist_zip_directory):
+            os.makedirs(playlist_zip_directory)
+
+        with zipfile.ZipFile(playlist_zip_path, 'w') as playlist_zip:
+            [playlist_zip.write(track_path, os.path.join(playlist_name, os.path.basename(track_path)))
+                 for track_path in tracks_path]
+
+        return sendfile(
+            request,
+            playlist_zip_path,
+            root_url='/tmp' + settings.SENDFILE_URL,
+            root_directory='/tmp' + settings.SENDFILE_ROOT,
+            attachment=True,
+            attachment_filename=zip_filename,
+            mimetype='application/x-zip-compressed',
+        )
+
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAccountAdminOrReadOnly, IsAuthenticated)

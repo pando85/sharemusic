@@ -1,4 +1,4 @@
-app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter, Playlist, Track, Upload, $timeout) {
+app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter, $window, Playlist, Track, Upload, $timeout) {
 
     $scope.openSavePlaylistModal = function(){
         var uibModalInstance = $uibModal.open({
@@ -334,4 +334,29 @@ app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter,
         });
     }
 
+    $scope.downloadPlaylist = function(playlist){
+        tracks_ids = [track.data.id for (track of playlist.tracks)]
+        
+        download_url = API_DOWNLOAD_PLAYLIST_URL + '?tracks=' + arrayToString(tracks_ids)
+
+        if(playlist.name != 'Queue')
+        {
+            download_url += '&name=' + playlist.name 
+        }
+
+        $window.open(download_url)
+    }
+
+
+    arrayToString = function(array){
+        string = '['
+        for (i = 0; i < array.length; i++){
+            string += array[i];
+            if (array.length - 1 != i)
+                string += ', '
+        }
+        string += ']'
+
+        return string
+    }
 });

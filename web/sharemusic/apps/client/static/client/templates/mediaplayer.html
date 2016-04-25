@@ -70,7 +70,8 @@
           <li><a ng-click="removePlaylist(currentPlaylist)">Delete playlist</a></li>
         </ul>
       </div>
-      <a ng-if="userMayDownload" class="btn btn-xs btn-default pull-left">download</a>
+      <!--<a ng-if="userMayDownload" class="btn btn-xs btn-default pull-left">download</a> -->
+      <a ng-if="1" ng-click="downloadPlaylist(currentPlaylist)" class="btn btn-xs btn-default pull-left">download</a>
     </div>
     <div class="playlist-progress row" ng-if="remainingPlaylistDuration" >
       <ul class="nav navbar-nav" style="width: 100%;">
