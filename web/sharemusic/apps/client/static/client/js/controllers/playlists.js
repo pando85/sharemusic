@@ -335,15 +335,15 @@ app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter,
     }
 
     $scope.downloadPlaylist = function(playlist){
-        tracks_ids = [track.data.id for (track of playlist.tracks)]
+        tracks_ids = [for (track of playlist.tracks) track.data.id]
         
         download_url = API_DOWNLOAD_PLAYLIST_URL + '?tracks=' + arrayToString(tracks_ids)
-
+        
         if(playlist.name != 'Queue')
         {
             download_url += '&name=' + playlist.name 
         }
-
+        
         $window.open(download_url)
     }
 
@@ -356,7 +356,7 @@ app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter,
                 string += ', '
         }
         string += ']'
-
+        
         return string
     }
 });

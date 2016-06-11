@@ -135,3 +135,23 @@ class TestExportPlaylistView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertTrue(os.path.exists('/tmp/usr/src/app/music/admin.zip'))
+
+class TestDownloadPlaylistView(APITestCase):
+    fixtures = ['directory', 'file', 'playlist', 'track', 'user']
+
+    def setUp(self):
+        self.user = User.objects.get(pk=1)
+        self.client = APIClient(enforce_csrf_checks=True)
+        self.client.force_authenticate(user=self.user)
+        self.url = reverse('api:download-playlist')
+
+    def test_unauthenticated_export_playlist_query(self):
+        client = APIClient()
+        response = client.get(self.url)
+
+        self.assertEqual(response.data, UNAUTHENTICATED_RESPONSE)
+
+    def test_export_playlist_query(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+

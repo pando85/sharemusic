@@ -256,10 +256,12 @@ class DownloadPlaylistViewSet(APIView):
         if not playlist_name:
             playlist_name = 'new_playlist'
 
-        tracks_json = eval(request.query_params.get('tracks', None))
-        if not tracks_json:
+        tracks_str = request.query_params.get('tracks', None)
+        if not tracks_str:
             return Response({'detail': ['No tracks in playlist to download.']},
                     status=status.HTTP_400_BAD_REQUEST)
+
+        tracks_json = eval(tracks_str)
 
         tracks_path = [str(File.objects.get(pk=track).absolute_path()) for track in tracks_json]
 
