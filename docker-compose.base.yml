@@ -26,7 +26,7 @@ redis:
     - "6379"
 
 data:
-  image: postgres:latest
+  image: postgres:9.5
   volumes:
     - /var/lib/postgresql
   command: "true"
