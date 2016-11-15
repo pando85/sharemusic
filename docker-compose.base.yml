@@ -16,7 +16,7 @@ nginx:
   build: ./nginx/
 
 postgres:
-  image: postgres:latest
+  image: postgres:9.5
   expose:
     - "5432"
 
