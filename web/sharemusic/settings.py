@@ -181,12 +181,12 @@ FIXTURE_DIRS = (
 
 # bower config
 BOWER_INSTALLED_APPS = (
+    'jquery',
+    'jplayer',
     'angular',
     'bootstrap',
     'angular-bootstrap',
     'angular-resource',
-    'jquery',
-    'jplayer',
     'dndLists',
     'underscore',
     'angular-dropdowns',
@@ -234,13 +234,13 @@ PIPELINE_CSS = {
 PIPELINE_JS = {
     'client': {
         'source_filenames': (
+            'client/bower_components/jquery/dist/jquery.min.js',
+            'client/bower_components/jPlayer/dist/jplayer/jquery.jplayer.min.js',
             'client/bower_components/angular/angular.min.js',
             'client/bower_components/angular-resource/angular-resource.min.js',
             'client/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js',
             'client/bower_components/angular-bootstrap/ui-bootstrap.min.js',
             'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-            'client/bower_components/jquery/dist/jquery.min.js',
-            'client/bower_components/jPlayer/dist/jplayer/jquery.jplayer.min.js',
             'client/bower_components/underscore/underscore-min.js',
             'client/bower_components/angular-dropdowns/dist/angular-dropdowns.min.js',
             'client/bower_components/angular-cookies/angular-cookies.min.js',

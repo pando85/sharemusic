@@ -1,6 +1,6 @@
 {
   "name": "angular-growl-notifications",
-  "version": "2.2.0",
+  "version": "2.4.0",
   "main": [
     "dist/angular-growl-notifications.js"
   ],
@@ -34,17 +34,17 @@
     "url": "git://github.com/jvandemo/angular-growl-notifications.git"
   },
   "dependencies": {
-    "angular": "~1.2.22"
+    "angular": ">=1.2.22 <2"
   },
   "homepage": "https://github.com/jvandemo/angular-growl-notifications",
-  "_release": "2.2.0",
+  "_release": "2.4.0",
   "_resolution": {
     "type": "version",
-    "tag": "v2.2.0",
-    "commit": "8dbeaad9844f341eec547866625cf602cf2882c7"
+    "tag": "v2.4.0",
+    "commit": "d92210a2e878b99367b05e6f870dc90d2fe08b62"
   },
-  "_source": "git://github.com/jvandemo/angular-growl-notifications.git",
-  "_target": "~2.2.0",
+  "_source": "https://github.com/jvandemo/angular-growl-notifications.git",
+  "_target": "^2.4.0",
   "_originalSource": "angular-growl-notifications",
   "_direct": true
 }

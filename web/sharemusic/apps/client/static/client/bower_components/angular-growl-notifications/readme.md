@@ -73,6 +73,24 @@ You can now use the `growl-notification` (singular) directive to create notifica
 </growl-notification>
 ```
 
+You can use AngularJS expressions:
+
+```html
+<!-- This notification will be shown when the page loads -->
+<growl-notification>
+  Hello {{name}}
+</growl-notification>
+```
+
+and HTML:
+
+```html
+<!-- This notification will be shown when the page loads -->
+<growl-notification>
+  Hello <strong>{{name}}</strong>
+</growl-notification>
+```
+
 Most of the time you will want to show a notification when some event occurs. You can use the native AngularJS `ng-if` directive to make this happen:
 
 ```html
@@ -146,6 +164,14 @@ There are many additional features and options, so make sure to visit the [examp
 MIT
 
 ## Change log
+
+### v2.4.0
+
+- Updated timeout cancel mechanism (#27)
+
+### v2.3.0
+
+- Updated angular dependency version (#22)
 
 ### v2.2.0
 

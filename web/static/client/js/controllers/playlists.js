@@ -335,7 +335,9 @@ app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter,
     }
 
     $scope.downloadPlaylist = function(playlist){
-        tracks_ids = [for (track of playlist.tracks) track.data.id]
+        // Only mozilla supported
+        //tracks_ids = [for (track of playlist.tracks) track.data.id];
+        tracks_ids = playlist.tracks.forEach(function(track){ return track.data.id; })
         
         download_url = API_DOWNLOAD_PLAYLIST_URL + '?tracks=' + arrayToString(tracks_ids)
         
