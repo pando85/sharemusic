@@ -22,8 +22,12 @@
   #
   -->
   {% stylesheet 'client' %}
-  {% javascript 'client' %}
 
+  <!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  {% javascript 'client' %}
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
 
   <link rel="icon" href="{% static "client/img/favicon32.png" %}" type="image/png">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
