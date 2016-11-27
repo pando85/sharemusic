@@ -337,10 +337,18 @@ app.controller('PlaylistsCtrl', function($scope, $rootScope, $uibModal, $filter,
     $scope.downloadPlaylist = function(playlist){
         // Only mozilla supported
         //tracks_ids = [for (track of playlist.tracks) track.data.id];
-        tracks_ids = playlist.tracks.forEach(function(track){ return track.data.id; })
-        
+
+        tracks_ids = [];
+
+        for (var i = 0, len = playlist.tracks.length; i < len; i++) {
+            console.log(playlist.tracks[i].data.id)
+            tracks_ids.push(playlist.tracks[i].data.id);
+        }
+
+        console.log(tracks_ids)
         download_url = API_DOWNLOAD_PLAYLIST_URL + '?tracks=' + arrayToString(tracks_ids)
         
+        console.log(download_url)
         if(playlist.name != 'Queue')
         {
             download_url += '&name=' + playlist.name 
