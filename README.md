@@ -45,8 +45,6 @@ nginx:
     - "80:80"
 ```
 
-### 
-
 ### Install dependencies:
 * [docker](https://docs.docker.com/engine/installation/)
 * [docker-compose](https://docs.docker.com/compose/install/)>=1.5.0
@@ -56,6 +54,8 @@ Create containers:
 docker-compose build
 docker-compose up -d
 ```
+
+**Note**: To run in production you will need to [Install bower components](#install-bower-components) and [Update static files](#update-static-files)
 
 Initialice database:
 ```bash
@@ -99,22 +99,14 @@ docker-compose -f docker-compose.dev.yml run  --rm web_dev python3 manage.py bow
 Update static files
 -------------------
 In development mode:
-
-In `./web`:
 ```bash
 docker-compose -f docker-compose.dev.yml run --rm web_dev python3 manage.py collectstatic
 ```
 
 Tests
 -----
-To install test containers:
-```bash
-docker-compose stop
-docker-compose -f docker-compose.test.yml build
-```
 
-Test server:
+Test backend:
 ```bash
-docker-compose -f docker-compose.test.yml run --rm web_test /usr/src/test.sh && \
-docker-compose -f docker-compose.test.yml stop
+./test_scripts/run_tests.sh 
 ```
