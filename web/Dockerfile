@@ -37,6 +37,4 @@ RUN pip3 install -r requirements.txt
 
 ADD . /usr/src/app
 
-ENTRYPOINT ["/usr/local/bin/gunicorn", "sharemusic.wsgi:application", "-b :8000"]
-
-CMD ["-w 6", "-t 5000"]
+CMD ["/usr/local/bin/gunicorn", "sharemusic.wsgi:application", "-b :8000", "-w 6", "-t 5000"]

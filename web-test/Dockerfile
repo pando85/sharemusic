@@ -1,4 +1,4 @@
-FROM sharemusic_web
+FROM pando85/sharemusic:latest
 
 RUN apt-get update && apt-get install -y postgresql postgresql-contrib
 
