@@ -13,7 +13,9 @@ nginx:
   extends:
     file: config.yml
     service: nginx
-  build: ./nginx/
+  image: nginx:latest
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
 
 postgres:
   image: postgres:9.5
