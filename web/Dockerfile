@@ -13,10 +13,10 @@ RUN (locale-gen \
     && locale-gen es_ES.UTF-8  \
     && dpkg-reconfigure locales)
 
-ENV LANGUAGE es_ES.UTF-8 
-ENV LANG es_ES.UTF-8 
-ENV LC_ALL es_ES.UTF-8 
-ENV LC_CTYPE es_ES.UTF-8 
+ENV LANGUAGE es_ES.UTF-8
+ENV LANG es_ES.UTF-8
+ENV LC_ALL es_ES.UTF-8
+ENV LC_CTYPE es_ES.UTF-8
 
 # python
 RUN apt-get update && apt-get install -y python3 python3-pip libpq-dev libjpeg-dev python-dev libmysqlclient-dev \
@@ -34,3 +34,9 @@ ADD ./requirements.txt /usr/src/app/
 
 WORKDIR /usr/src/app
 RUN pip3 install -r requirements.txt
+
+ADD . /usr/src/app
+
+ENTRYPOINT ["/usr/local/bin/gunicorn", "sharemusic.wsgi:application", "-b :8000"]
+
+CMD ["-w 6", "-t 5000"]

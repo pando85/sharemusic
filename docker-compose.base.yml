@@ -6,8 +6,7 @@ web:
     - "8000"
   volumes:
     - /tmp
-    - ./web:/usr/src/app
-  command: /usr/local/bin/gunicorn sharemusic.wsgi:application -w 6 -b :8000 --timeout 5000
+    - /usr/src/app
 
 nginx:
   extends:

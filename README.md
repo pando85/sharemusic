@@ -55,8 +55,6 @@ docker-compose build
 docker-compose up -d
 ```
 
-**Note**: To run in production you will need to [Install bower components](#install-bower-components) and [Update static files](#update-static-files)
-
 Initialice database:
 ```bash
 docker-compose run --rm web python3 manage.py migrate auth

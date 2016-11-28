@@ -2,11 +2,11 @@ web:
   extends:
     file: docker-compose.base.yml
     service: web
+  image: pando85/sharemusic:latest
   restart: always
   links:
     - postgres:postgres
     - redis:redis
-  build: ./web
 
 nginx:
   extends:

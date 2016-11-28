@@ -2,6 +2,8 @@ web_dev:
   extends:
     file: docker-compose.base.yml
     service: web
+  volumes:
+    - ./web:/usr/src/app
   links:
     - postgres:postgres
     - redis:redis
