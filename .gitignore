@@ -23,3 +23,6 @@ config.yml
 # Log file
 web/sharemusic.log
 web/sharemusic.error.log
+
+# desktop app
+sharemusic-linux-x64
