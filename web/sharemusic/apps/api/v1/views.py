@@ -341,7 +341,7 @@ def stream(request, path):
     file_path = str(basedir / path)
     mime_type = 'audio/ogg'
 
-    if(file_path.lower().endswith(('mp3', 'ogg'))):
+    if(file_path.lower().endswith(('mp3', 'ogg', 'flac'))):
         return sendfile(
             request,
             file_path,
