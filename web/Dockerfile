@@ -6,7 +6,8 @@ RUN (apt-get clean \
     && apt-get -q -y update --fix-missing \
     && apt-get -q -y update \
     && apt-get install -q -y apt-utils \
-    && apt-get install -q -y locales)
+    && apt-get install -q -y locales) && \
+    rm -rf /var/lib/apt/lists/*
 
 ADD conf/locale.gen /etc/locale.gen
 RUN (locale-gen \
@@ -19,15 +20,22 @@ ENV LC_ALL es_ES.UTF-8
 ENV LC_CTYPE es_ES.UTF-8
 
 # python
-RUN apt-get update && apt-get install -y python3 python3-pip libpq-dev libjpeg-dev python-dev libmysqlclient-dev \
-    software-properties-common
+RUN apt-get update && \
+    apt-get install -y \
+    python3 python3-pip libpq-dev libjpeg-dev python-dev \
+    libmysqlclient-dev software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
 
 # ffmpeg
 RUN add-apt-repository ppa:mc3man/trusty-media -y
-RUN apt-get update && apt-get install -y ffmpeg vorbis-tools flac lame
+RUN apt-get update && \
+    apt-get install -y ffmpeg vorbis-tools flac lame && \
+    rm -rf /var/lib/apt/lists/*
 
 # git
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
 
 # app copy
 ADD ./requirements.txt /usr/src/app/
