@@ -39,7 +39,7 @@ web:
   environment:
     - SECRET_KEY=p0py3a&i7w^!#nfitarp&7p!0bj3j4!aez3huh)53!=ud128f(
     - DEBUG
-    
+
 nginx:
   ports:
     - "80:80"
@@ -51,13 +51,13 @@ nginx:
 
 Create containers:
 ```bash
-docker-compose build
+docker-compose build && \
 docker-compose up -d
 ```
 
 Initialice database:
 ```bash
-docker-compose run --rm web python3 manage.py migrate auth
+docker-compose run --rm web python3 manage.py migrate auth && \
 docker-compose run --rm web python3 manage.py migrate 
 ```
 
@@ -85,9 +85,11 @@ Development frotent
 -------------------
 To install and run development containers:
 ```bash
-docker-compose stop
-docker-compose -f docker-compose.dev.yml build
-docker-compose -f docker-compose.dev.yml up -d
+docker-compose  -f docker-compose.dev.yml down && \
+docker-compose -f docker-compose.dev.yml build && \
+docker-compose -f docker-compose.dev.yml up -d && \
+docker-compose -f docker-compose.dev.yml run --rm web_dev python3 manage.py migrate auth && \
+docker-compose -f docker-compose.dev.yml run --rm web_dev python3 manage.py migrate
 ```
 
 Install bower components:
@@ -106,5 +108,5 @@ Tests
 
 Test backend:
 ```bash
-./test_scripts/run_tests.sh 
+./test_scripts/run_tests.sh
 ```
