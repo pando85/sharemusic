@@ -180,26 +180,24 @@ FIXTURE_DIRS = (
 )
 
 # bower config
-BOWER_INSTALLED_APPS = (
-    'jquery',
-    'jplayer',
-    'angular',
-    'bootstrap',
-    'angular-bootstrap',
-    'angular-resource',
-    'dndLists',
-    'underscore',
-    'angular-dropdowns',
-    'angular-cookies',
-    'json3',
-    'es5-shim',
-    'angular-sanitize',
-    'angular-route',
-    'chieffancypants/angular-hotkeys',
-    'ng-file-upload',
-    'angular-growl-notifications',
-    'angular-animate',
-)
+BOWER_INSTALLED_APPS = ('underscore#1.8.3',
+ 'es5-shim#4.5.9',
+ 'angular#1.5.9',
+ 'angular-hotkeys#1.7.0',
+ 'angular-resource#1.5.9',
+ 'angular-sanitize#1.5.9',
+ 'ng-file-upload#12.2.13',
+ 'angular-drag-and-drop-lists#1.4.0',
+ 'json3#3.3.2',
+ 'angular-growl-notifications#2.4.0',
+ 'angular-dropdowns#1.5.1',
+ 'angular-route#1.5.9',
+ 'jquery#3.1.1',
+ 'angular-bootstrap#2.3.0',
+ 'jPlayer#2.9.2',
+ 'bootstrap#3.3.7',
+ 'angular-animate#1.5.9',
+ 'angular-cookies#1.5.9')
 
 # pipeline config
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
