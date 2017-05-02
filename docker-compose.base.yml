@@ -6,7 +6,8 @@ web:
     - "8000"
   volumes:
     - /tmp
-    - /usr/src/app
+    - /usr/src/app/static
+    - /usr/src/app/music
 
 nginx:
   extends:

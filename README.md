@@ -49,16 +49,18 @@ nginx:
 * [docker](https://docs.docker.com/engine/installation/)
 * [docker-compose](https://docs.docker.com/compose/install/)>=1.5.0
 
-Create containers:
+Install all:
 ```bash
-docker-compose build && \
-docker-compose up -d
-```
+#Create containers
+docker-compose pull && \
+docker-compose up -d && \
 
-Initialice database:
-```bash
+#Initialice database
 docker-compose run --rm web python3 manage.py migrate auth && \
-docker-compose run --rm web python3 manage.py migrate 
+docker-compose run --rm web python3 manage.py migrate && \
+
+#Collect static files
+docker-compose run --rm web python3 manage.py collectstatic
 ```
 
 Default admin user: `admin/admin`

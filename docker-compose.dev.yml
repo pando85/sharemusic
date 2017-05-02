@@ -7,7 +7,7 @@ web_dev:
   links:
     - postgres:postgres
     - redis:redis
-  build: ./web-dev
+  build: ./web
   environment:
     - DEBUG=true
 

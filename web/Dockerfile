@@ -37,7 +37,17 @@ RUN apt-get update && \
     apt-get install -y git && \
     rm -rf /var/lib/apt/lists/*
 
-# app copy
+# nodejs
+RUN apt-get update && \
+    apt-get install -y nodejs npm && \
+    rm -rf /var/lib/apt/lists/*
+
+# collectstatic dependencies
+RUN npm install -g bower less yuglify
+
+# fix node
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+
 ADD ./requirements.txt /usr/src/app/
 
 WORKDIR /usr/src/app
