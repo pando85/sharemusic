@@ -183,7 +183,7 @@ FIXTURE_DIRS = (
 BOWER_INSTALLED_APPS = ('underscore#1.8.3',
  'es5-shim#4.5.9',
  'angular#1.5.9',
- 'angular-hotkeys#1.7.0',
+ 'chieffancypants/angular-hotkeys#1.7.0',
  'angular-resource#1.5.9',
  'angular-sanitize#1.5.9',
  'ng-file-upload#12.2.13',
