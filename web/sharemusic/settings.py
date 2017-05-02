@@ -194,7 +194,7 @@ BOWER_INSTALLED_APPS = ('underscore#1.8.3',
  'angular-route#1.5.9',
  'jquery#3.1.1',
  'angular-bootstrap#2.3.0',
- 'jPlayer#2.9.2',
+ 'jplayer#2.9.2',
  'bootstrap#3.3.7',
  'angular-animate#1.5.9',
  'angular-cookies#1.5.9')
