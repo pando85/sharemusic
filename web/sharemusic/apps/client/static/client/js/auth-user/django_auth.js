@@ -38,7 +38,7 @@ app.service('djangoAuth', function djangoAuth($q, $http, $cookies, $rootScope) {
             .then(function (success){(angular.bind(this,function(data, status, headers, config) {
                 deferred.resolve(data, status);
             }))},
-            function (error)(angular.bind(this,function(data, status, headers, config) {
+            function (error){(angular.bind(this,function(data, status, headers, config) {
                 console.log("error syncing with: " + url);
                 // Set request status
                 if(data){
@@ -60,7 +60,7 @@ app.service('djangoAuth', function djangoAuth($q, $http, $cookies, $rootScope) {
                     }
                 }
                 deferred.reject(data, status, headers, config);
-            })));
+            }))});
             return deferred.promise;
         },
         'register': function(username,password1,password2,email,more){
