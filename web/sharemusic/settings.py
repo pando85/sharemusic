@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
     'rest_auth',
     'pipeline',
     'djangobower',

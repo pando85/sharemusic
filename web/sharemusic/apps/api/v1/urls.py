@@ -2,12 +2,16 @@ from django.core.urlresolvers import reverse
 from django.conf.urls import url, include
 
 from rest_framework import routers
+from rest_framework_swagger.views import get_swagger_view
 
 from .views import (FileViewSet, DirectoryViewSet, ServerStatusView, PlaylistViewSet, 
     ImportPlaylistViewSet, ExportPlaylistViewSet, DownloadPlaylistViewSet, UserViewSet, 
     UserSettingsViewSet, TrackViewSet, stream, BrowseView, IndexDirectoryView,
      AlbumArtView, GlobalSearchList
      )
+
+
+schema_view = get_swagger_view(title='Sharemusic API')
 
 router = routers.DefaultRouter()
 router.register(r'file', FileViewSet)
@@ -28,5 +32,6 @@ urlpatterns = [
     url(r'index/(?P<path>.*)', IndexDirectoryView.as_view(), name="index-files"),
     url(r'albumart/(?P<path>.*)', AlbumArtView.as_view(), name="album-art"),
     url(r'^', include(router.urls)),
-    url(r'^rest-auth/', include('rest_auth.urls', namespace='rest-auth'))
+    url(r'^rest-auth/', include('rest_auth.urls', namespace='rest-auth')),
+    url(r'^docs/$', schema_view)
 ]
