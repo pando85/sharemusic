@@ -43,7 +43,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # collectstatic dependencies
-RUN npm install -g bower less yuglify
+# set ca null to fix npm old installation checking certs
+RUN npm set ca null && \
+    npm install -g bower less yuglify
 
 # fix node
 RUN ln -s /usr/bin/nodejs /usr/bin/node

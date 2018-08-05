@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 REPO_PATH="$( dirname $DIR)"
 
@@ -8,7 +10,7 @@ if [ ! -f config.yml ]; then
     cp config.example.yml config.yml
 fi
 
-docker-compose build web
+docker build ./web -t sharemusic:test
 docker-compose -f docker-compose.test.yml build
 docker-compose -f docker-compose.test.yml up -d
 
