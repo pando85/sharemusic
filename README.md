@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img width="400" height="71,149 " src="https://user-images.githubusercontent.com/40801473/43910266-41343ba2-9bf4-11e8-9901-5c51dafe07e0.png">
+</p>
+
 ShareMusic
 ===========
 [![Build Status](https://travis-ci.org/pando85/sharemusic.svg?branch=master)](https://travis-ci.org/pando85/sharemusic)
