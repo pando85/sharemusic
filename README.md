@@ -117,3 +117,8 @@ Test backend:
 ```bash
 ./test_scripts/run_tests.sh
 ```
+
+Contrib
+-------
+
+- Logo design by[zuurw](https://github.com/zuurw)

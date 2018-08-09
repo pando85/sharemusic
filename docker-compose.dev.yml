@@ -9,7 +9,7 @@ web_dev:
     - redis:redis
   build: ./web
   environment:
-    - DEBUG=true
+    - DEBUG=false
 
 nginx:
   extends:
